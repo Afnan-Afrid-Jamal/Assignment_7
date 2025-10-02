@@ -22,7 +22,7 @@
     "title": "Password Reset",
     "description": "Users request password resets but never receive the reset emails. Spam folders have been checked. This issue affects multiple users and prevents account recovery. Immediate fix needed.",
     "customer": "Bob Johnson",
-    "priority": "High",
+    "priority": "Low",
     "status": "In Progress",
     "createdAt": "2025-10-01"
   },
@@ -40,7 +40,7 @@
     "title": "Error 500 on Checkout",
     "description": "When users attempt to checkout items in the cart, the server intermittently returns a 500 Internal Server Error. This prevents order completion and affects sales. Urgent backend fix required.",
     "customer": "Michael Brown",
-    "priority": "Critical",
+    "priority": "High",
     "status": "Open",
     "createdAt": "2025-10-01"
   },
@@ -58,7 +58,7 @@
     "title": "Incorrect Pricing",
     "description": "Several product pages are displaying incorrect prices, different from the prices set in the backend system. This could cause confusion for customers and potential revenue loss.",
     "customer": "William Martinez",
-    "priority": "High",
+    "priority": "Low",
     "status": "Open",
     "createdAt": "2025-10-01"
   },
@@ -85,7 +85,7 @@
     "title": "App Crash on Android",
     "description": "Android users report that opening the settings page in the mobile app causes immediate crashes. Users cannot change preferences or access settings. Requires urgent debugging and patch.",
     "customer": "Isabella Thomas",
-    "priority": "Critical",
+    "priority": "Low",
     "status": "Open",
     "createdAt": "2025-10-01"
   },
