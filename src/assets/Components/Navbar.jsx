@@ -32,7 +32,7 @@ const Navbar = () => {
                 <a href="#">Contacts</a>
               </li>
             </ul>
-            <button className="flex justify-center items-center w-[140px] h-[43px] rounded-lg font-semibold bg-gradient-to-r from-[#632EE3] to-[#9F62F2] text-center text-white gap-2 hover:cursor-pointer hover:scale-103">
+            <button className="btn flex justify-center items-center w-[140px] h-[43px] rounded-lg font-semibold bg-gradient-to-r from-[#632EE3] to-[#9F62F2] text-center text-white gap-2 hover:cursor-pointer hover:scale-103">
               <img src={PlusIcon} alt="" className="w-5 invert" />
               New Ticket
             </button>
