@@ -1,35 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CorrectPng from '../correct.png';
 
-const TaskStatus = ({ getData }) => {
-    if (!getData || getData.length === 0) return null;
+const TaskStatus = ({ getData, setGetData, setInProgressCount, setResolveCount }) => {
+  const [resolvedTasks, setResolvedTasks] = useState([]);
 
-    return (
-        <div>
-            <h1 className='text-2xl font-semibold mb-8'>Task Status</h1>
+  const activeTasks = getData.filter(task => !resolvedTasks.some(t => t.id === task.id));
 
-            {getData.map((data) => (
-                <div className='bg-white shadow-md rounded-lg px-6 py-4 mb-8'>
-                    <h2 className='text-lg font-medium mb-4'>{data.title}</h2>
-                    <button className='btn w-full bg-[#02A53B] py-2 text-white text-base rounded-lg hover:bg-[#027e2e]'>
-                        Complete
-                    </button>
-                </div>
-            ))}
+  const handleComplete = (task) => {
+    setResolvedTasks(prev => [...prev, task]);
+    setGetData(prev => prev.filter(t => t.id !== task.id));
+    setInProgressCount(prev => prev - 1);
+    setResolveCount(prev => prev + 1);
+  };
 
-            <div className='mt-16'>
-                <h1 className='text-2xl font-semibold mb-4'>Resolved Tasks</h1>
-                {getData.map((data) => (
-                    <div className='bg-white shadow-md rounded-lg px-6 py-4 mb-8'>
-                        <h2 className='text-lg font-medium mb-4'>{data.title}</h2>
-                        <p className='flex items-center text-lg font-semibold gap-1 text-green-500'>
-                            <img src={CorrectPng} alt="" className='w-5 h-5' />Completed
-                        </p>
-                    </div>
-                ))}
-            </div>
+  return (
+    <div>
+      <h1 className="text-2xl font-semibold mb-4">Task Status</h1>
+      {activeTasks.length > 0 ? activeTasks.map(task => (
+        <div key={task.id} className="bg-white shadow-md rounded-lg px-6 py-4 mb-4">
+          <h2 className="text-lg font-medium mb-2">{task.title}</h2>
+          <button
+            className="btn w-full bg-[#02A53B] py-2 text-white rounded-lg hover:bg-[#027e2e]"
+            onClick={() => handleComplete(task)}
+          >
+            Complete
+          </button>
         </div>
-    );
+      )) : <p className="text-gray-500">Select a ticket to add to Task Status</p>}
+
+      <h1 className="text-2xl font-semibold mb-4 mt-8">Resolved Tasks</h1>
+      {resolvedTasks.length > 0 ? resolvedTasks.map(task => (
+        <div key={task.id} className="bg-white shadow-md rounded-lg px-6 py-4 mb-4">
+          <h2 className="text-lg font-medium mb-2">{task.title}</h2>
+          <p className="flex items-center gap-1 text-green-500 font-semibold">
+            <img src={CorrectPng} alt="completed" className="w-5 h-5" /> Completed
+          </p>
+        </div>
+      )) : <p className="text-gray-500">No resolved tasks yet.</p>}
+    </div>
+  );
 };
 
 export default TaskStatus;

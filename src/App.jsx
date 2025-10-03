@@ -4,31 +4,42 @@ import Navbar from "./assets/Components/Navbar";
 import ProgressResolvedCard from "./assets/Components/ProgressResolvedCard";
 import CustomerTicketsSection from "./assets/Components/CustomerTicketsSection";
 import TaskStatus from "./assets/Components/TaskStatus";
-
+import { ToastContainer } from 'react-toastify';
 
 const fetchTickets = fetch("/tickets.json").then(res => res.json());
 
-
 function App() {
-
   const [inprogressCount, setInProgressCount] = useState(0);
+  const [resolveCount, setResolveCount] = useState(0);
   const [showTaskStatus, setShowTaskStatus] = useState(false);
-  const [getData,setGetData] = useState([])
+  const [getData, setGetData] = useState([]);
 
   return (
     <>
-      <Navbar></Navbar>
-      <ProgressResolvedCard inprogressCount={inprogressCount}></ProgressResolvedCard>
-      <Suspense fallback={<p>Loading...</p>}>
+      <Navbar />
+      <ProgressResolvedCard inprogressCount={inprogressCount} resolveCount={resolveCount} />
+      <Suspense fallback={<div className="flex justify-center items-center"><span className="loading loading-dots loading-xl"></span></div>}>
         <section className="grid grid-cols-1 md:grid-cols-12 gap-8 mt-20 max-w-[1440px] mx-auto px-3 md:px-0">
           <div className="col-span-6 md:col-span-9">
-            <CustomerTicketsSection fetchTickets={fetchTickets} inprogressCount={inprogressCount} setInProgressCount={setInProgressCount} showTaskStatus={showTaskStatus} setShowTaskStatus={setShowTaskStatus} setGetData={setGetData}></CustomerTicketsSection>
+            <CustomerTicketsSection
+              fetchTickets={fetchTickets}
+              setInProgressCount={setInProgressCount}
+              setShowTaskStatus={setShowTaskStatus}
+              getData={getData}
+              setGetData={setGetData}
+            />
           </div>
           <div className="col-span-6 md:col-span-3">
-              <TaskStatus fetchTickets={fetchTickets} showTaskStatus={showTaskStatus} setShowTaskStatus={setShowTaskStatus} getData={getData}></TaskStatus>
+            <TaskStatus
+              getData={getData}
+              setGetData={setGetData}
+              setInProgressCount={setInProgressCount}
+              setResolveCount={setResolveCount}
+            />
           </div>
         </section>
       </Suspense>
+      <ToastContainer />
     </>
   );
 }
