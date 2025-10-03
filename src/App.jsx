@@ -13,6 +13,7 @@ function App() {
   const [resolveCount, setResolveCount] = useState(0);
   const [showTaskStatus, setShowTaskStatus] = useState(false);
   const [getData, setGetData] = useState([]);
+  const [resolvedTickets, setResolvedTickets] = useState([]);
 
   return (
     <>
@@ -27,6 +28,7 @@ function App() {
               setShowTaskStatus={setShowTaskStatus}
               getData={getData}
               setGetData={setGetData}
+              resolvedTickets={resolvedTickets}
             />
           </div>
           <div className="col-span-6 md:col-span-3">
@@ -35,6 +37,8 @@ function App() {
               setGetData={setGetData}
               setInProgressCount={setInProgressCount}
               setResolveCount={setResolveCount}
+              resolvedTickets={resolvedTickets}
+              setResolvedTickets={setResolvedTickets}
             />
           </div>
         </section>

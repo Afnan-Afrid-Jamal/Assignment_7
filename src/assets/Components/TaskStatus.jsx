@@ -1,22 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CorrectPng from '../correct.png';
+import { toast } from 'react-toastify';
 
-const TaskStatus = ({ getData, setGetData, setInProgressCount, setResolveCount }) => {
-  const [resolvedTasks, setResolvedTasks] = useState([]);
-
-  const activeTasks = getData.filter(task => !resolvedTasks.some(t => t.id === task.id));
+const TaskStatus = ({ getData, setGetData, setInProgressCount, setResolveCount, resolvedTickets, setResolvedTickets }) => {
 
   const handleComplete = (task) => {
-    setResolvedTasks(prev => [...prev, task]);
     setGetData(prev => prev.filter(t => t.id !== task.id));
+
+
+    setResolvedTickets(prev => [...prev, task]);
+
+
     setInProgressCount(prev => prev - 1);
     setResolveCount(prev => prev + 1);
+    toast(
+      <span className="flex items-center gap-2 font-medium">
+        <img src={CorrectPng} alt="icon" className="w-5 h-5" />Completed
+      </span>
+    );
   };
 
   return (
     <div>
       <h1 className="text-2xl font-semibold mb-4">Task Status</h1>
-      {activeTasks.length > 0 ? activeTasks.map(task => (
+      {getData.length > 0 ? getData.map(task => (
         <div key={task.id} className="bg-white shadow-md rounded-lg px-6 py-4 mb-4">
           <h2 className="text-lg font-medium mb-2">{task.title}</h2>
           <button
@@ -29,7 +36,7 @@ const TaskStatus = ({ getData, setGetData, setInProgressCount, setResolveCount }
       )) : <p className="text-gray-500">Select a ticket to add to Task Status</p>}
 
       <h1 className="text-2xl font-semibold mb-4 mt-8">Resolved Tasks</h1>
-      {resolvedTasks.length > 0 ? resolvedTasks.map(task => (
+      {resolvedTickets.length > 0 ? resolvedTickets.map(task => (
         <div key={task.id} className="bg-white shadow-md rounded-lg px-6 py-4 mb-4">
           <h2 className="text-lg font-medium mb-2">{task.title}</h2>
           <p className="flex items-center gap-1 text-green-500 font-semibold">
