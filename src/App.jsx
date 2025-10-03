@@ -5,6 +5,7 @@ import ProgressResolvedCard from "./assets/Components/ProgressResolvedCard";
 import CustomerTicketsSection from "./assets/Components/CustomerTicketsSection";
 import TaskStatus from "./assets/Components/TaskStatus";
 import { ToastContainer } from 'react-toastify';
+import Footer from "./assets/Components/Footer";
 
 const fetchTickets = fetch("/tickets.json").then(res => res.json());
 
@@ -43,6 +44,7 @@ function App() {
           </div>
         </section>
       </Suspense>
+      <Footer></Footer>
       <ToastContainer />
     </>
   );
