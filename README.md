@@ -1,16 +1,32 @@
-# React + Vite
+## 1. What is JSX, and why is it used?
+**JSX** stands for *JavaScript XML.*  
+It allows us to write HTML-like code inside JavaScript.  
+It makes the code easier to read and helps React show UI elements efficiently.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## 2. What is the difference between State and Props?
+- **State:** Data that can change inside a component.  
+- **Props:** Data passed from parent to child components.  
+👉 State is *internal*, Props are *external.*
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 3. What is the useState hook, and how does it work?
+`useState` is a React Hook that lets us create and manage state in a functional component.  
+It returns an array: `[value, setValue]`, where `setValue` updates the state and re-renders the UI.
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 4. How can you share state between components in React?
+We can share state by **lifting it up** to a common parent component, then passing it down to child components using **props.**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 5. How is event handling done in React?
+Events in React are handled using **camelCase** syntax (e.g., `onClick`).  
+We pass a function as the event handler, like this:
+
+**Example (in JSX):**
+```jsx
+<button onClick={handleClick}>Click Me</button>

@@ -18,7 +18,7 @@ function App() {
 
   return (
     <>
-      <Navbar />
+      <Navbar></Navbar>
       <ProgressResolvedCard inprogressCount={inprogressCount} resolveCount={resolveCount} />
       <Suspense fallback={<div className="flex justify-center items-center"><span className="loading loading-dots loading-xl"></span></div>}>
         <section className="grid grid-cols-1 md:grid-cols-12 gap-8 mt-20 max-w-[1440px] mx-auto px-3 md:px-0">

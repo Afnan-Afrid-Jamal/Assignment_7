@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 const TicketCard = ({ eachTicketData, setInProgressCount, setShowTaskStatus, setGetData, getData }) => {
 
 
-  const isInProgress = getData.some(t => t.id === eachTicketData.id);
+  const isInProgress = getData.find(t => t.id === eachTicketData.id)?true:false;
 
   function handleCardClick() {
 
@@ -29,8 +29,9 @@ const TicketCard = ({ eachTicketData, setInProgressCount, setShowTaskStatus, set
     >
       <div className='flex justify-between items-center'>
         <h2 className='text-lg font-medium'>{eachTicketData.title}</h2>
-        <div className='flex items-center gap-2'>
-          <p className={`${eachTicketData.status === 'Open' ? 'text-green-500 bg-green-100' : 'text-blue-500 bg-blue-100'} px-2 py-1 rounded-2xl`}>
+        <div className={`flex items-center gap-1 ${eachTicketData.status === 'Open' ? 'text-green-500 bg-green-100' : 'text-blue-500 bg-blue-100'} px-2 py-1 rounded-2xl`}>
+          <div class={`w-4 h-4 rounded-full ${eachTicketData.status === 'Open' ? 'bg-green-600':'bg-blue-600'}`}></div>
+          <p>
             {eachTicketData.status}
           </p>
         </div>

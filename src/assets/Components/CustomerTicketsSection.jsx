@@ -10,7 +10,7 @@ const CustomerTicketsSection = ({ fetchTickets, setInProgressCount, setShowTaskS
       <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
         {ticketsData
           .filter(ticket =>
-            !resolvedTickets.some(t => t.id === ticket.id)
+            !resolvedTickets.find(t => t.id === ticket.id)?true:false
           )
           .map(eachTicketData => (
             <TicketCard
