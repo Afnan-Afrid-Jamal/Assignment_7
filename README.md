@@ -8,7 +8,7 @@ It makes the code easier to read and helps React show UI elements efficiently.
 ## 2. What is the difference between State and Props?
 - **State:** Data that can change inside a component.  
 - **Props:** Data passed from parent to child components.  
-👉 State is *internal*, Props are *external.*
+- State is *internal*, Props are *external.*
 
 ---
 
